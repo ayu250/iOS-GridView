@@ -19,5 +19,6 @@ grid.delegate = self;
 -(NSArray *)gridView:(MLHGridView *)gridView dataForRow:(NSInteger)row;  
 
   
-  效果图
+  效果图  
+  
 ![image](https://github.com/ayu250/iOS-GridView/blob/master/Simulator%20Screen%20Shot%20-%20iPhone%208%20-%202018-05-18%20at%2014.33.25.png)
