@@ -68,7 +68,7 @@
     NSInteger columns = [self.delegate numberOfColumnsForGridView:self row:row];
     //方格文字宽度
     CGFloat textWidth = CGRectGetWidth(rect)/columns;
-    textWidth = textWidth - MLH_textToLeft - MLH_textToRight;
+    textWidth = floor( textWidth - MLH_textToLeft - MLH_textToRight );
     
     UIFont *font = [UIFont systemFontOfSize:MLH_textFontSize];
     NSArray *arr = [self.delegate gridView:self dataForRow:row];
@@ -76,8 +76,9 @@
     CGSize maxSize = CGSizeMake(textWidth, MAXFLOAT);
     for (NSString *item in arr) {
         CGSize textSize = [item boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil].size;
-        if (maxHeight < textSize.height) {
-            maxHeight = ceil( textSize.height);
+        CGFloat tempH = ceil(textSize.height);
+        if (maxHeight < tempH) {
+            maxHeight = tempH ;
         }
     }
     maxHeight = maxHeight + MLH_textToTop + MLH_textToBottom;
@@ -124,11 +125,16 @@
         }
         
         //设置字体颜色
-        if ([self.delegate respondsToSelector:@selector(gridView:textColorForRow:)]) {
-            UIColor *textColor = [self.delegate gridView:self textColorForRow:indexPath.section];
+        if ([self.delegate respondsToSelector:@selector(gridView:textColorForRow:column:)]) {
+            UIColor *textColor = [self.delegate gridView:self textColorForRow:indexPath.section column:indexPath.row];
             if( textColor){
                 cell.textLabel.textColor = textColor;
             }
+        }
+        ///设置flagImage
+        if([self.delegate respondsToSelector:@selector(gridView:flagImageForRow:column:)]){
+            UIImage *img = [self.delegate gridView:self flagImageForRow:indexPath.section column:indexPath.row];
+            cell.flagImg.image = img;
         }
         //设置竖向分隔线的颜色
         if(indexPath.row < (arr.count - 1)){
