@@ -16,6 +16,7 @@
 @property(nonatomic,weak) IBOutlet UILabel *leftLine;
 @property(nonatomic,weak) IBOutlet UILabel *topLine;
 @property(nonatomic,weak) IBOutlet UILabel *bottomLine;
+@property(nonatomic,weak) IBOutlet UIImageView *flagImg;
 
 -(void)setFirstRow:(BOOL)firstRow firstColumn:(BOOL)firstColumn;
 

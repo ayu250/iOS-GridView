@@ -39,8 +39,10 @@
 
 -(UIColor *)gridView:(MLHGridView *)gridView backgroundColorForRow:(NSInteger)row;
 
--(UIColor *)gridView:(MLHGridView *)gridView textColorForRow:(NSInteger)row;
+-(UIColor *)gridView:(MLHGridView *)gridView textColorForRow:(NSInteger)row column:(NSInteger)column;
 
 -(UIColor *)gridView:(MLHGridView *)gridView verticalSeparatorColorForRow:(NSInteger)row column:(NSInteger)column;
+
+-(UIImage *)gridView:(MLHGridView *)gridView flagImageForRow:(NSInteger)row column:(NSInteger)column;
 
 @end

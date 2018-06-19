@@ -25,6 +25,7 @@
     self.topLine.backgroundColor = MLH_lineColor;
     self.bottomLine.backgroundColor = MLH_lineColor;
     self.textLabel.font = [UIFont systemFontOfSize:MLH_textFontSize];
+    self.flagImg.image = nil;
 }
 
 // MARK: -
